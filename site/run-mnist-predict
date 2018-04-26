@@ -1,0 +1,13 @@
+CURR=`pwd`
+SLIM=/home/ubuntu/tutorials/TensorFlow/serving
+cd $SLIM
+cp $CURR/uploads/$1 .
+convert $1 $1.jpg
+rm $1
+
+python ./mnist-predict-client.py $1.jpg --server=localhost:9000 2>/dev/null
+rm $1.jpg
+cd $CURR
+rm $CURR/uploads/$1
+
+

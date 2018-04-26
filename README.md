@@ -103,18 +103,57 @@ source activate tensorflow_p27
 cd /home/ubuntu/tutorials/TensorFlow/serving
 ```
 
-Run the example came with Google 
+Run the example came with Google -
 
 ```
 # run Google original test
 python mnist_client.py --num_tests=1000 --server=localhost:9000
 ```
 
+Since Tensorflow Serving uses gRPC as protocol so it is quite difficult to figure out how to use it. Look at the _mnist-predict-client.py_ you can have a feeling of tasks you need to do in order to use the service:
+
+* You need to understand the model methods well and know how to prepare the inputs. In this case form mnist model, need to translate the input image to a 28x28 greyscale array and normalize the value from [0..255] to [0..1].
+* You need to understand that since the call is async, you have to wait for the results to come back, implemented here "_ResultWaiter" class.
+* Need to implement the call back function and singnal between waiter and callback.
+
+```
+# run the client to predict one image file - I have them as: _digit-X.JPG_
+python mnist-predict-client.py digit-2.jpg --server=localhost:9000 
+```
+
+### Step 6. Do HTTP Bridge with Nodejs
+
+A lot people are too familiar with the normal "browser-enabled" APIs, so they rather want to use a web server to bridge the grpc calls. There are standard ways, and there are projects that can direct host TensorFlow as both grpc and http services. Here I just put together a nodejs web server and do some samll tests.
+
+Open another terminal, do -
+
+```
+cd /home/ubuntu/tensorflow/site
+./start-server
+```
+
+To test use the pre-trained vgg and inception_v1 model, in the old terminal, do -
+```
+cd ~/tensorflow
+
+# call the web service with the image file wolfpck2.jpg. Optionally, you can download other images
+curl -XPOST http://localhost:9999/predict -F "file=@wolfpck2.jpg"
+``
+
+Make sure your Tensorflow Serving is still running on port 9000, now test it with -
+
+```
+# digit number 2
+curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-2.JPG"
 
 
-# run the slightly modified test file to 
-python test_mnist --server=localhost:9000
+# digit number 2
+curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-9.JPG"
+```
 
-### Step 6. Test HTTP Bridge with Nodejs
-Tensorflow Serving uses gRPC as protocol so it is a little difficult to call from a web browser
 
+
+
+
+
+curl -XPOST http://localhost:9999/predict -F "file=@wolfpck2.jpg"

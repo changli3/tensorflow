@@ -3,7 +3,11 @@ chmod +x get-predict
 chmod +x predict
 chmod +x site/start-server 
 chmod +x site/run-predict
+chmod +x site/run-mnist-predict
 cp -f get-predict $SLIM/.
 cp -f predict $SLIM/.
 cp -f *.py $SLIM/.
-cp -f test_mnist /home/ubuntu/tutorials/TensorFlow/serving/.
+cp -f mnist-predict-client.py /home/ubuntu/tutorials/TensorFlow/serving/.
+npm install express-fileupload
+npm install node-uuid
+
