@@ -138,7 +138,7 @@ cd ~/tensorflow
 
 # call the web service with the image file wolfpck2.jpg. Optionally, you can download other images
 curl -XPOST http://localhost:9999/predict -F "file=@wolfpck2.jpg"
-``
+```
 
 Make sure your Tensorflow Serving is still running on port 9000, now test it with -
 
@@ -156,4 +156,4 @@ curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-9.JPG"
 
 
 
-curl -XPOST http://localhost:9999/predict -F "file=@wolfpck2.jpg"
+
