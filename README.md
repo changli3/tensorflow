@@ -118,7 +118,7 @@ Since Tensorflow Serving uses gRPC as protocol so it is quite difficult to figur
 
 ```
 # run the client to predict one image file - I have them as: _digit-X.JPG_
-python mnist-predict-client.py digit-2.jpg --server=localhost:9000 
+python mnist-predict-client.py digit-2.JPG --server=localhost:9000 
 ```
 
 ### Step 6. Do HTTP Bridge with Nodejs
