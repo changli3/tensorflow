@@ -66,9 +66,10 @@ python mnist_saved_model.py /tmp/mnist_model
 
 # check the saved model
 ls /tmp/mnist_model/1
-
 ```
+
 The file /tmp/mnist_model/1/saved_model.pb is a binary file. To make it a text/json format:
+
 ```
 sed 's/builder.save()/builder.save(as_text=True)/' mnist_saved_model.py > mnist_saved_model2.py
 python mnist_saved_model2.py /tmp/mnist_model2
@@ -76,10 +77,13 @@ python mnist_saved_model2.py /tmp/mnist_model2
 # check the saved model, you can see the pbtxt file
 ls /tmp/mnist_model2/1
 ```
+
 The saved model not only exports the model snapshot, it defines the serving signature (input/output variables) as well. You can use _saved_model_cli_ to exam the model:
+
 ```
 saved_model_cli show --all --dir /tmp/mnist_model/1
 ```
+
 You can there are two methods defined "predict" and "classify" and predict method takes a 28x28 grayscale image as input, and so on.
 ![model info](https://raw.githubusercontent.com/changli3/tensorflow/master/model_info.JPG "model info")
 
@@ -90,17 +94,26 @@ tensorflow_model_server --port=9000 --model_name=mnist --model_base_path=/tmp/mn
 ```
 
 
+### Step 5. Use Serving Tensorflow
 
-# try to use the client call (with another termminal)
+Now try to use the service with client call. Open another termminal and login as ubuntu. Then -
+
+```
 source activate tensorflow_p27
 cd /home/ubuntu/tutorials/TensorFlow/serving
+```
 
+Run the example came with Google 
+
+```
 # run Google original test
 python mnist_client.py --num_tests=1000 --server=localhost:9000
+```
+
+
 
 # run the slightly modified test file to 
 python test_mnist --server=localhost:9000
-```
 
 ### Step 6. Test HTTP Bridge with Nodejs
 Tensorflow Serving uses gRPC as protocol so it is a little difficult to call from a web browser
