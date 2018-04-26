@@ -20,7 +20,7 @@ git clone https://github.com/udacity/deep-learning.git
 ```
 And then start JupyterLab and brwose to the lessons. Note that you have select environment to be "conda_tensorflow_p27" 
 
-### Step 4. Run More Test
+### Step 4. Run More Tests with Pre-trained Models
 Run the following commands to setup the environment
 ```
 git clone https://github.com/changli3/tensorflow.git
