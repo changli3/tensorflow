@@ -1,0 +1,8 @@
+source activate tensorflow_p27
+if [[ $1 == both ]]; 
+then 
+   python inception_v1.py "file://`pwd`/$2" 2>/dev/null
+   python vgg.py "file://`pwd`/$2" 2>/dev/null
+else 
+   python $1.py "file://`pwd`/$2" 2>/dev/null
+fi

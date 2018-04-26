@@ -1,0 +1,7 @@
+fullfilename=$2
+fname=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 32);
+curl $fullfilename -o $fname
+convert $fname "$fname.jpg"
+rm $fname 
+./predict $1 "$fname.jpg"
+rm "$fname.jpg"

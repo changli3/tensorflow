@@ -1,0 +1,2 @@
+source activate tensorflow_p27
+node app.js

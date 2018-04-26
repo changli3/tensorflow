@@ -1,0 +1,8 @@
+SLIM=/home/ubuntu/src/serving_tensorflow_p27/tf_models/research/slim
+cd $SLIM
+curl $1 -s -o mydownloadfile >/dev/null
+convert mydownloadfile mydownloadfile.jpg
+rm mydownloadfile
+
+python inception_v1.py "file://$SLIM/mydownloadfile.jpg" 2>/dev/null
+python vgg.py "file://$SLIM/mydownloadfile.jpg" 2>/dev/null
