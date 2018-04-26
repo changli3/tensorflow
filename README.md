@@ -110,7 +110,7 @@ Run the example came with Google -
 python mnist_client.py --num_tests=1000 --server=localhost:9000
 ```
 
-Since Tensorflow Serving uses gRPC as protocol so it is quite difficult to figure out how to use it. Look at the _mnist-predict-client.py_ you can have a feeling of tasks you need to do in order to use the service:
+Since Tensorflow Serving uses gRPC as protocol so it is quite difficult to figure out how to use it. I have done an example here in the file _mnist-predict-client.py_. Look at the code, you will have a feeling of tasks you need to do in order to use the service:
 
 * You need to understand the model methods well and know how to prepare the inputs. In this case form mnist model, need to translate the input image to a 28x28 greyscale array and normalize the value from [0..255] to [0..1].
 * You need to understand that since the call is async, you have to wait for the results to come back, implemented here "_ResultWaiter" class.
