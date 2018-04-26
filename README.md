@@ -155,6 +155,11 @@ curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-9.JPG"
 
 ### Pictures Used
 
+* Digit 2
 ![digit 2](https://raw.githubusercontent.com/changli3/tensorflow/master/digit-2.JPG "digit 2")
+
+* Digit 9
 ![digit 9](https://raw.githubusercontent.com/changli3/tensorflow/master/digit-9.JPG "digit 9")
+
+* Wolves
 ![wolfpck2](https://raw.githubusercontent.com/changli3/tensorflow/master/wolfpck2.jpg "wolfpck2")
