@@ -147,7 +147,7 @@ Make sure your Tensorflow Serving is still running on port 9000, now test it wit
 curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-2.JPG"
 
 
-# digit number 2
+# digit number 9
 curl -XPOST http://localhost:9999/mnist-predict  -F "file=@digit-9.JPG"
 ```
 
